@@ -99,8 +99,8 @@ Sparse Reconstruction aims to recover a 3D representation of a scene from a set 
 With the Essential Matrix in hand, the next step involves estimating the relative pose, which includes the rotation and translation between the two camera positions. Using this information, triangulation is performed to reconstruct the 3D positions of the matched points by identifying the spatial points that correspond to the 2D projections in both images. Together, these steps enable the accurate reconstruction of sparse 3D points from the input images. This sparse 3D point cloud serves as the foundation for further processing, such as dense reconstruction, which aims to create a more complete and detailed 3D model of the scene.
 
 <p align="center">
-<img src="readme/reconstruction1.jpg" alt="Reconstruction 1" height="200">
-<img src="readme/reconstruction2.jpg" alt="Reconstruction 2" height="200">
+<img src="readme/reconstruction1.jpg" alt="Reconstruction 1" width="250">
+<img src="readme/reconstruction2.jpg" alt="Reconstruction 2" width="200">
 </p>
 
 #### Epipolar Correspondence
@@ -108,7 +108,7 @@ With the Essential Matrix in hand, the next step involves estimating the relativ
 Epipolar Correspondence is a crucial part of Sparse Reconstruction, as it deals with the problem of finding corresponding points between two images. The project implements this by leveraging the Fundamental Matrix to compute the epipolar lines, which are the key to reducing the search space for matching points. Instead of searching the entire image, the correspondence is constrained to the epipolar line, which drastically simplifies the problem. The matching process is further refined by using a similarity measure, which compares pixel intensities along the epipolar line to identify the best match. This method ensures that the corresponding points found are consistent with the epipolar geometry, thereby improving the accuracy of the subsequent 3D reconstruction steps.
 
 <p align="center">
-<img src="readme/epipolar.jpg" alt="Epipolar correspondence" height="300">
+<img src="readme/epipolar.jpg" alt="Epipolar correspondence" width="450">
 </p>
 
 ### Dense Reconstruction
@@ -116,8 +116,8 @@ Epipolar Correspondence is a crucial part of Sparse Reconstruction, as it deals 
 Dense Reconstruction builds upon the sparse set of 3D points generated during Sparse Reconstruction to create a more detailed 3D model of the scene. This process involves estimating depth and disparity maps, which provide a dense representation of the distance between the cameras and every point in the scene. The project implements this by first rectifying the images, aligning them so that corresponding points lie on the same row in both images. Once the images are rectified, the disparity map is computed by finding the difference in horizontal position for corresponding points. This disparity map is then converted into a depth map, which represents the distance of each point from the camera. The depth map is used to generate a dense 3D point cloud, providing a much more complete and detailed representation of the scene compared to the sparse reconstruction.
 
 <p align="center">
-<img src="readme/depth.jpg" alt="Depth" height="400">
-<img src="readme/disparity.jpg" alt="Disparity" height="400">
+<img src="readme/depth.jpg" alt="Depth" width="300">
+<img src="readme/disparity.jpg" alt="Disparity" width="300">
 </p>
 
 #### Image Rectification
@@ -125,7 +125,7 @@ Dense Reconstruction builds upon the sparse set of 3D points generated during Sp
 Image Rectification is a crucial preprocessing step in Dense Reconstruction, transforming images so that the epipolar lines become horizontal, which simplifies finding corresponding points between them. In this project, rectification is achieved by computing transforms based on the Essential or Fundamental Matrix, which aligns the images horizontally. The images are then warped according to these transforms, correcting any perspective distortions and ensuring that corresponding points lie on the same row. This process significantly reduces the complexity of stereo matching, laying the groundwork for accurate disparity estimation and a more precise 3D reconstruction.
 
 <p align="center">
-<img src="readme/rectification.jpg" alt="Image Rectification" height="250">
+<img src="readme/rectification.jpg" alt="Image Rectification" width="700">
 </p>
 
 ### Pose Estimation
